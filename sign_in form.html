@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title> SIgnIn Form</title>
+</head>
+<style>
+    .form-container {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 3px dashed seagreen;
+  border-radius: 10px;
+  padding: 20px;
+  margin :auto;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block; 
+  width: 150px; 
+  height: 40px; 
+  font-size: 30px;
+}
+button {
+    background-color:chartreuse ;
+    border-radius: 100px;
+    border-color :brown;
+    width: 150px; 
+    height: 40px; 
+    padding: 10px 20px; 
+    font-size: 16px;
+    margin-top :30px;
+    
+}
+button:hover {
+    background-color: rgb(231, 26, 19);
+}
+input {
+  margin-bottom: 10px;
+  display: block; 
+  width: 250px; 
+  height: 20px; 
+  font-size: 20px; 
+  text-align: center;
+    
+
+}
+</style>
+
+
+<body style="background-color: sandybrown">
+
+    <!--  SCRIPT -->
+ 
+
+   <!--   HEADING --> 
+<h1 style="text-align: center; color: purple"> Sign-in Form </h1>
+
+
+   <!--   FORM --> 
+<form class="form-container" id ="signInForm">
+  <label for="Username">Username:</label>
+  <input type="text" id="Username" name="Username" placeholder="AlishaAbid"><br>
+  <label for="Password">Password:</label>
+  <input type="text" id="Password" name="Password" placeholder="123abc@cfd"><br>
+  <button type ="submit"> SUBMIT</button>
+</form>
+<script>
+   
+$(document).ready(function() {
+    $('#signInForm').submit(function(event) {
+        var username = $('#Username').val(); 
+        var password = $('#Password').val(); 
+        if (username === '' || password === '') {
+            alert('Please fill in all fields.');
+            event.preventDefault(); 
+        }
+        var specialCharPattern = /[!@#$%^&*(),.?":{}|<>]/;
+        var numericCharPattern = /[0-9]/;
+        var passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/;
+         if (!passwordPattern.test(password)) {
+        alert('Password must contain at least 8 characters, including one special character and one numeric character.');
+        event.preventDefault();
+        }
+        else{
+            alert("form submitted")
+        }
+    });
+});
+</script>
+
+    
+   
+</body>
+</html>
